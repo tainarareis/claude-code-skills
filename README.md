@@ -19,14 +19,82 @@ Skills live in `.claude/skills/` and are automatically available to Claude Code 
 
 ## Usage
 
-Open this project in Claude Code and either:
+### 1. Navigate to your project
 
-- Let Claude pick the relevant skill automatically based on your request, or
-- Invoke one directly, e.g. `/playwright-generator`, `/bug-investigator`, `/pr-review-qa`.
+Open your terminal and go to your project directory:
+
+```bash
+cd my-project
+```
+
+### 2. Copy the `.claude` folder
+
+Copy the `.claude` folder from this repository into the root of your project.
+
+Your project structure should look like this:
+
+```text
+my-project/
+├── src/
+├── tests/
+├── package.json
+└── .claude/
+    └── skills/
+        ├── api-test-designer/
+        ├── bug-investigator/
+        ├── exploratory-testing/
+        ├── performance-review/
+        ├── playwright-generator/
+        ├── pr-review-qa/
+        └── qa-documentation/
+```
+
+### 3. Start Claude Code
+
+From your project directory, run:
+
+```bash
+claude
+```
+
+### 4. Ask Claude to perform a task
+
+For example:
+
+> Generate Playwright tests for the Login page.
+
+or
+
+> Create Playwright tests for the Checkout flow.
+
+Claude will analyze your request and automatically load the most appropriate skill based on its description.
+
+### 5. (Optional) Explicitly invoke a skill
+
+If you want to ensure a specific skill is used, reference it by name.
+
+For example:
+
+> Use the **playwright-generator** skill to generate Playwright tests for the Login page.
+
+or
+
+> Using the **playwright-generator** skill, create Playwright tests for this feature.
+
+This helps Claude select the intended skill when multiple skills could apply.
 
 ## Adding a new skill
 
-Create a new folder under `.claude/skills/<skill-name>/` with a `SKILL.md` file containing:
+Create a new folder under `.claude/skills/<skill-name>/` with a `SKILL.md` file 
+
+The structure will look like
+
+.claude/
+└── skills/
+    └── skill-name/
+        └── SKILL.md
+
+The SKILL.md file must contain:
 
 ```markdown
 ---
